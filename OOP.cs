@@ -18,8 +18,12 @@ public class DealershipProgram
 		Console.WriteLine(car1.getPrintout());
 		Console.WriteLine(car2.getManufactureYear(Globals.currentYear));
 
-		UserInterface.DisplayOptions();
 
+		UserInterface UI1 = new UserInterface();
+
+		UserInterface.DisplayOptions();
+		int selection = UI1.getUserSelection();
+		UserInterface.callOptionMethod(selection);
 	}
 }
 
@@ -36,8 +40,6 @@ class UserInterface
 		Console.WriteLine("4: Modify Entry");
 		Console.WriteLine("0: Exit Browser");
 
-		int userSelection = getInt();
-		Console.WriteLine(userSelection);
 	}
 
 
@@ -68,6 +70,45 @@ class UserInterface
 
 
     }
+
+	public int getUserSelection()
+	{
+		//Get user input and return
+        int userSelection = getInt();
+		return userSelection;
+    }
+
+
+	public static void callOptionMethod(int userSelection)
+	{
+		//Switch Case to Translate User input to program function.
+		//Console outputs are for debug and not final.
+		switch (userSelection)
+		{
+			case 1:
+				Console.WriteLine("Create New Entry");
+				break;
+
+			case 2:
+				Console.WriteLine("Display Entries");
+				break;
+
+			case 3:
+				Console.WriteLine("Search Entry");
+				break;
+
+			case 4:
+				Console.WriteLine("Modify Entry");
+				break;
+
+			case 0:
+				Console.WriteLine("Exit Browser");
+				break;
+
+		}
+	}
+
+
 }
 
 
