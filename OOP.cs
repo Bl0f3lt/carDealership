@@ -26,7 +26,52 @@ public class DealershipProgram
 		Console.WriteLine(car1.getPrintout());
 		Console.WriteLine(car2.getManufactureYear(Globals.currentYear));
 
+		UserInterface.DisplayOptions();
+
 	}
+}
+
+
+class UserInterface
+{
+	public static void DisplayOptions()
+	{
+		Console.WriteLine("1: Create New Entry");
+		Console.WriteLine("2: Display Entries");
+		Console.WriteLine("3: Search For Entry");
+		Console.WriteLine("4: Modify Entry");
+		Console.WriteLine("0: Exit Browser");
+
+		//int userSelection = Convert.ToInt32(Console.ReadLine());
+		int userSelection = getInt();
+		Console.WriteLine(userSelection);
+	}
+
+	public static int getInt()
+	{
+		bool validInt = false;
+		string userEntry = "";
+
+		while (validInt != true) 
+		{
+            userEntry = Console.ReadLine();
+            
+			try
+            {
+                Convert.ToInt32(userEntry);
+				validInt = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Please Enter a Valid Number! Try Again.");
+            }
+			
+        }
+        
+		return Convert.ToInt32(userEntry);
+
+
+    }
 }
 
 
