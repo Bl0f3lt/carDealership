@@ -12,16 +12,8 @@ public class DealershipProgram
 	static void Main(string[] args)
 	{
 		//Main Code Block.
-		Car car1 = new Car("jazz", "honda", "silver", 17);
-		Car car2 = new Car("V40", "volvo", "silver", 6);
-
-		Console.WriteLine(car1.getPrintout());
-		Console.WriteLine(car2.getManufactureYear(Globals.currentYear));
-
 		int selection = 1;
-
         UserInterface UI1 = new UserInterface();
-
 		while (selection != 0)
 		{
 			//Main loop
@@ -109,7 +101,7 @@ class UserInterface
 		string? capturedString = "";
         while (isNull) {
             capturedString = Console.ReadLine();
-			if (capturedString != null) { isNull = false; }
+			if (capturedString is not null) { isNull = false; }
 			else { Console.WriteLine("Null value entered! Please enter non null value"); }
         }
 		return capturedString;
@@ -153,6 +145,23 @@ class UserInterface
 		}
 	}
 
+	private void searchEntry()
+	{
+		Console.WriteLine("Enter Num Plate of Entry to Retreive: ");
+		string searchNumPlate = getNonNullString();
+		try
+		{
+            Car carObject = (Car) this.carMap[searchNumPlate];
+			Console.WriteLine(carObject.getPrintout());
+        }
+		catch
+		{
+			Console.WriteLine("Entry not Found!.");
+		}
+		
+
+
+	}
 
 	public void callOptionMethod(int userSelection)
 	{
@@ -178,6 +187,7 @@ class UserInterface
 
 			case 3:
 				Console.WriteLine("Search Entry");
+				searchEntry();
 				break;
 
 			case 4:
