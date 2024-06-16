@@ -18,12 +18,17 @@ public class DealershipProgram
 		Console.WriteLine(car1.getPrintout());
 		Console.WriteLine(car2.getManufactureYear(Globals.currentYear));
 
+		int selection = 1;
 
-		UserInterface UI1 = new UserInterface();
+        UserInterface UI1 = new UserInterface();
 
-		UserInterface.DisplayOptions();
-		int selection = UI1.getUserSelection();
-		UI1.callOptionMethod(selection);
+		while (selection != 0)
+		{
+			//Main loop
+            UserInterface.DisplayOptions();
+            selection = UI1.getUserSelection();
+            UI1.callOptionMethod(selection);
+        }
 	}
 }
 
